@@ -29,7 +29,17 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee {
+  constructor (first_name, last_name, email, age){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+  }
+  makeWidget(){
+    return `${this.first_name} ${this.last_name} Widget`;
+  }
+}
 
 
 
@@ -49,8 +59,18 @@
   Call your new class Manager
 */
 
-//Code Here
-
+class Manager extends Employee {
+  constructor (first_name, last_name, email, age, reports){
+    super(first_name, last_name, email, age)
+    this.reports = []
+  }
+  hire(Employee){
+    this.reports.push(Employee)
+  }
+  fire(index){
+    this.reports.splice(index, 1)
+  }
+}
 
 
 ////////// PROBLEM 3 //////////
@@ -75,7 +95,48 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager extends Manager {
+  constructor(first_name, last_name, email, age, reports, title, bonus){
+    super(first_name, last_name, email, age, reports)
+    this.title = 'Not a manager';
+    this.bonus = 0;
+    this.employeeCount = 0;
+  }
+
+  checkTitle(){
+    let length = this.employeeCount;
+    switch (true) {
+      case length >= 1 && length <= 3:
+        this.title = "Barely Manager";
+        break;
+      case length >= 4 && length <= 10:
+        this.title = "Mostly Manager";
+        break;
+      case length >= 11 && length <= 50:
+        this.title = "Manager";
+        break;
+      case length >= 51 && length <= 100:
+        this.title = "Manager Plus";
+        break;
+      case length >= 101:
+        this.title = "Bestest Manager";
+        break;
+      default:
+        this.title = "Not a manager";
+    }
+  }
+
+  hire(Employee){
+    super.hire(Employee);
+    this.employeeCount++
+    this.checkTitle()
+  }
+
+  fire(index){
+    this.reports.splice(index,1);
+    this.bonus += 100;
+  }
+}
 
 
 
@@ -102,6 +163,26 @@
         - It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
+class Machine {
+  constructor (widgets_made_count =0, wear_and_tear_count=0, needs_reboot=false){
+    this.widgets_made_count = widgets_made_count;
+    this.wear_and_tear_count = wear_and_tear_count;
+    this.needs_reboot = needs_reboot;
+  }
+  makeWidgets(numWidgetsMade){
+    this.widgets_made_count += numWidgetsMade;
+    //The Math.floor() function returns the largest integer less than or equal to a given number.
+    this.wear_and_tear_count += Math.floor(numWidgetsMade/50);
+  }
+  fixMachine(){
+    this.needs_reboot=true;
+  }
+  reboot(){
+    return () => {
+      this.wear_and_tear_count -= 10;
+      this.needs_reboot = false;
+    }
+  }
+}
 
 
