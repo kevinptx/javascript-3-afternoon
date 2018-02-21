@@ -21,7 +21,7 @@ var carDetails = {
   Use object destructuring to save the property values from the object carDetails into new variables. 
 */
 
-//Code Here
+const {color, make, model, year} = carDetails;
 
 
 
@@ -34,7 +34,7 @@ var carDetails = {
 */
 
 function greeting( obj ) {
-  //Code Here
+  const {firstName, lastName, title} = obj
   
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
@@ -53,8 +53,9 @@ function greeting( obj ) {
   Sum up the values and return the total number.
 */
 
-//Code Here
-
+function totalPopulation({utah, california, texas, arizona}){
+  return utah + california + texas + arizona
+}
 
 
 ////////// PROBLEM 4 //////////
@@ -67,7 +68,12 @@ function greeting( obj ) {
   Push these new variables to an array and return the array. 
 */
 
-//Code Here
+function ingredients(obj){
+  const {carb, fat, protein} = obj
+  let newArray = []
+  newArray.push(carb, fat, protein)
+  return newArray;
+}
 
 
 
@@ -85,8 +91,16 @@ function greeting( obj ) {
   Find the smallest number of the three and return that number.
 */
 
-//Code Here
+function largeNumbers(obj){
+  const {first, second, third} = obj
+  return Math.min(first, second, third)
+}
 
+//another way
+/*
+const largeNumbers({first, second, third}) =>{
+  return Math.min(first, second, third)
+*/
 
 
 ////////// PROBLEM 6 //////////
@@ -97,6 +111,28 @@ function greeting( obj ) {
   Find the longest array and return that array.
 */
 
-//Code Here
+/*
+function numberGroups({a, b, c}){
 
+  //The Math.max() function returns the largest of zero or more numbers.The length property determines the number of elements in an array. We are performing a the Math.max() function on the longest array and using a switch statement to return the longest one.
 
+   switch(Math.max(a.length,b.length,c.length)){
+     case a.length:
+     return a;
+     case b.length:
+     return b;
+     case c.length:
+     return c;
+   }
+}
+*/
+
+function numberGroups({a, b, c}){
+  if (a.length > b.length && a.length > c.length){
+    return a;
+  } else if (b.length > a.length && b.length > c.length){
+    return b;
+  } else if (c.length > a.length && c.length > b.length){
+    return c;
+  }
+}
