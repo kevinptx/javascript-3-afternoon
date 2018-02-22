@@ -97,7 +97,7 @@ function double(obj){
 */
 
 function secrets(obj){
-  let emtpyString = ''
+  let emtpyString = '';
   for(var key in obj){
     /*The startsWith() method determines whether a string begins with the characters of a specified string, returning true or false as appropriate.*/
     if(key.startsWith('sh')){
@@ -115,17 +115,17 @@ function secrets(obj){
   Uncomment the example below to see a for in loop deleting all the properties inside an object.
 */
 
-// var deleteAllThethings = {
-//   one: 1,
-//   two: 2,
-//   three: 3
-// }
+var deleteAllThethings = {
+  one: 1,
+  two: 2,
+  three: 3
+}
 
-// for(var key in deleteAllThethings) {
-//   delete deleteAllThethings[key]
-// }
+for(var key in deleteAllThethings) {
+  delete deleteAllThethings[key]
+}
 
-// console.log(deleteAllThethings)
+console.log(deleteAllThethings)
 
 
 
@@ -136,8 +136,17 @@ function secrets(obj){
   Delete the property password and return the object.
 */
 
-//Code Here
+/*
+function removePassword(obj){
+  delete obj.password
+  return obj;
+}
+*/
 
+let removePassword = obj => {
+  delete obj.password;
+  return obj;
+}
 
 
 ////////// PROBLEM 6 //////////
@@ -155,7 +164,11 @@ var deleteTheBigNumbers = {
   Write a for in loop that deletes every property from the object deleteTheBigNumbers whose value is greater than 100.
 */
 
-//Code Here
+for (var key in deleteTheBigNumbers){
+  if(deleteTheBigNumbers[key]> 100){
+    delete deleteTheBigNumbers[key];
+  }
+}
 
 
 
@@ -168,8 +181,14 @@ var deleteTheBigNumbers = {
   Return the updated object.
 */
 
-//Code Here
-
+let startsWithK = obj => {
+  for(let key in obj){
+    if(key.startsWith('k')){
+      delete obj[key];
+    }
+  }
+  return obj;
+};
 
 
 ////////// PROBLEM 8 //////////
@@ -183,6 +202,12 @@ var deleteTheBigNumbers = {
   (hint: the method includes() may be of use...)
 */
 
-//Code Here
-
+let hiddenTreasure = obj => {
+  for(let key in obj){
+    if(!obj[key].includes('treasure')){
+      delete obj[key];
+    }
+  }
+  return obj;
+}
 
