@@ -50,7 +50,16 @@ var employees = [
     3. Return the updated employee array.
 */
 
-//Code Here
+function employeeUpdater(){
+  employees.forEach(function(element){
+    if (element.firstName=== 'Theo'){
+      delete element.firstName
+    } else if (element.firstName=== 'Lorie'){
+      element.department = 'HR'
+    }
+  })
+ return employees;
+}
 
 
 
@@ -68,8 +77,16 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
     3. Return the updated array.
 */
 
-//Code Here
-
+let removeDuplicates = () => {
+  for (let i = workplaceAccidents.length -1; i >= 0; i--){
+    for(let j = 0; j < i; j++){
+      if(workplaceAccidents[i]===workplaceAccidents[j]){
+        workplaceAccidents.splice(j, 1)
+      }
+    }
+  }
+  return workplaceAccidents;
+}
 
 
 ////////// PROBLEM 3 //////////
